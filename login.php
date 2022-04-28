@@ -46,35 +46,29 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title></title>
+	<title> Login </title>
+    <link rel="stylesheet" type="text/css" href="login.css">
 </head>
 <body>
-	<center>	
-	<h1>Login Form</h1>
-	<br><br><br><br>
-	<div style="background-color: grey; width: 500px,">
-	<br><br>
-
+	
+	
 	<form action="#" method="POST">
-
-	<div>
-		<label>username</label>
-		<input type="text" name="username" required>
-	</div>	
-	<br><br>
-
-	<div>
-		<label>password</label>
-		<input type="password" name="password" required>
-	</div>
-	<br><br>
-
-	<div>
-		<input type="submit" value="Login">
-	</div>
-	</form>
-	<br><br>
-	</center>
+	<div class="login-box">
+    <img src="https://lh3.googleusercontent.com/qag3J9gjMFZQst-cqpqJluGU8DLnOmtv2bHS1SwomyFLxqgCJQbF43e-RO_0WoKwKiKNIA=s85" class="avatar">
+        <h1>Login</h1>
+            <form>
+            <p>Username</p>
+            <input type="text" name="username" placeholder="Enter Username">
+            <p>Password</p>
+            <input type="password" name="password" placeholder="Enter Password">
+            <input type="submit" name="submit" value="Login">
+            <a href="#">Forget Password</a>    
+            </form>
+        
+        
+        </div>
+	
 
 </body>
+
 </html>
