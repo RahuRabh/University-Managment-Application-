@@ -1,3 +1,33 @@
+<?php 
+
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "user";
+
+  $conn = mysqli_connect($servername, $username, $password, $dbname);
+
+  if($conn)
+  {
+    echo "Connection Stablished";
+  }
+  else{
+    echo "Connection not stablished";
+  }
+
+  $id = file_get_contents("private.txt") or die("Unable to open file!");
+
+  $sql="select * from form where vtuid = '".$id."'";
+
+  $result=mysqli_query($conn,$sql);
+
+  $row=mysqli_fetch_array($result);
+
+  echo $row["vtuid"];
+
+
+?>
+  
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,6 +46,7 @@
       <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
     
 <header class="ScriptHeader">
     <div class="rt-container">
@@ -40,12 +71,12 @@
         <div class="card shadow-sm">
           <div class="card-header bg-transparent text-center">
             <img class="profile_img" src="https://source.unsplash.com/600x300/?student" alt="student dp">
-            <h3>Venkata Rajeswari Karnam</h3>
+            <h3><?php echo $row["name"]; ?></h3>
           </div>
           <div class="card-body">
-            <p class="mb-0"><strong class="pr-1">Vtu Id:</strong>VTU 12484</p>
-            <p class="mb-0"><strong class="pr-1">Registration No:</strong>18UECS0367</p>
-            <p class="mb-0"><strong class="pr-1">Email Id:</strong>vtu12484@veltech.edu.in</p>
+            <p class="mb-0"><strong class="pr-1">Vtu Id:</strong><?php echo $row["vtuid"]; ?></p>
+            <p class="mb-0"><strong class="pr-1">Registration No:</strong><?php echo $row["registrationno"]; ?></p>
+            <p class="mb-0"><strong class="pr-1">Email Id:</strong><?php echo $row["emailaddress"]; ?></p>
           </div>
         </div>
       </div>
@@ -59,17 +90,17 @@
               <tr>
                 <th width="30%">D.O.B</th>
                 <td width="2%">:</td>
-                <td>1-1-2000</td>
+                <td><?php echo $row["dob"]; ?></td>
               </tr>
               <tr>
                 <th width="30%">Academic Year </th>
                 <td width="2%">:</td>
-                <td>2018-2022</td>
+                <td><?php echo $row["batch"]; ?></td>
               </tr>
               <tr>
                 <th width="30%">Phone Number</th>
                 <td width="2%">:</td>
-                <td>9098979695</td>
+                <td><?php echo $row["phonenumber"]; ?></td>
               </tr>
               <tr>
                 <th width="30%">Parent's Name</th>
@@ -79,7 +110,7 @@
               <tr>
                 <th width="30%">Address</th>
                 <td width="2%">:</td>
-                <td>Queen's hostel, Veltech, Avadi, Chennai</td>
+                <td><?php echo $row["address"]; ?></td>
               </tr>
             </table>
           </div>
